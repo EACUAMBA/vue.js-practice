@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-pt">
+	<head>
+		<title>
+			4 - composing-with-components
+		</title>
+		<style>
+			
+		</style>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<p>Simple app that cannot pass data through his sons.</p>
+		<ol id="app">
+			<todo-item> </todo-item>
+		</ol>
+		<script>
+			Vue.component(
+			'todo-item',
+			{
+			template: "<li>This is a todo</li>"
+			}
+			);
+			
+			
+			
+			var app = new Vue({
+				el: "#app",
+				data:{
+					
+				}
+			});
+</script>
+
+<p>Simple app that can pass data through his sons.</p>
+		<ol id="app-2">
+			<todo-item
+				v-for="item in todoList"
+				v-bind:todo="item"
+				v-bind:key="item.id"
+			> </todo-item>
+		</ol>
+		<script>
+			Vue.component(
+			'todo-item',
+			{
+			props: ['todo'],
+			template: "<li>{{todo.text}}</li>"
+			}
+			);
+			
+			
+			
+			var app_2 = new Vue({
+				el: "#app-2",
+				data:{
+					todoList: [
+					{id: 0, text: "Buy Water!"},
+					{id: 1, text: "Buy Cooldrink!"},
+					{id: 2, text: "Takes the Kids from schoos!"},
+					{id: 3, text: "Take the cake from the bakerie!"}
+					]
+				}
+			});
+</script>
+</body>
+</html>

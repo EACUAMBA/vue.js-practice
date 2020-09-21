@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-pt">
+	<head>
+		<title>3 - handling-user-inputs</title>
+		<style>
+		
+		</style>
+		
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<p>Using "v-on" to attach and event listener to my button.</p>
+		<div id="v-on">
+			<p>{{message}}</p>
+			<button v-on:click="reverseMessage" style="padding: 5px 10px; border-radius: 15px;">Reverse Message</button>
+		</div>
+		<script>
+			var v_on = new Vue({
+				el: "#v-on",
+				data: {
+					message: "Hello Vue.js!"
+				},
+				methods:{
+					reverseMessage: function(){
+						this.message = this.message.split("").reverse().join("")
+					} 
+				}
+			})
+		</script>
+<hr>
+	<div id="v-model">
+		<p>{{message}}</p>
+		<input v-model="message" name="message" style="padding: 5px 10px; border-radius: 15px;">
+	</div>
+	<script>
+		var v_model = new Vue({
+			el: "#v-model",
+			data:{
+				message: "Hello Edilson!"
+			}
+			});
+	</script>
+	
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-pt">
+	<head>
+		<title>2 - conditionals-and-loops</title>
+		<style>
+			
+		</style>
+		
+		
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<p>Conditionals</p>
+		<div id="conditionals">
+			<span v-if="seen">
+				Now you see me!
+			</span>
+		</div>
+		<script>
+			var conditionals = new Vue({
+			
+			el: "#conditionals",
+			data: {
+				seen: true //try out: in cosole calls the app instance and change the value of property seen to false.
+			}
+		});
+	</script>
+	<hr>
+	<p>Loops</p>
+	<div id="loops">
+		<ol>
+			<li v-for="todo in todos">{{todo.text}}</li>
+		</ol>
+	</div>
+	<script>
+		var loops = new Vue({
+			el: "#loops",
+			data:{
+				todos: [
+				{text: "Learn JavaScript!"},
+				{text: "Learn Vue.js"},
+				{text: "Develop something awesome!"}
+				]
+			}
+		});
+	</script>
+</body>
+</html>		
