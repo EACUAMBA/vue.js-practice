@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-pt">
+	<head>
+		<title>
+			2 - data-and-methods
+		</title>
+		<style>
+			
+		</style>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+        <p>See the behavior of vm when I add data</p>
+        <div id="app-1">
+
+        </div>
+        <script>
+            //create a data
+            var data = {a: 1};
+
+            //adding the value
+            var vm = new Vue({
+                el: "#app-1",
+                data:data
+            });
+
+            //You will see that the value of data from vue will be same of data created outside;
+            console.log(vm.a == data.a); // ouput: true
+
+            //And if you chage the value of the data, in the vm the value will change too;
+            data.a = 20;
+            console.log(vm.a); // output: 20
+
+            /*
+            * Note that if you create a new property in data and change the value it will not re-render.
+            * You have new alternative, create a property before and add some pattern value, see in the exemple below;
+            */
+
+            var data={
+                name:"",
+                bornDate: "",
+                height: 0,
+                single: true
+            }
+
+
+            /*
+            * Note that if you use Object.freeze(object instance), vue will not be able to re-render with the new value. Vue will no longer change the value of the property it will disable the react funcionality. See in the exemple below:
+            */
+        </script>
+        <p id="app-2">{{name}}</p>
+        <script>
+            var data = {
+                name: "Edilson Alexandre Cuamba"
+            }
+            Object.freeze(data); // I'm freezing the object data, the state cannot be changed;
+
+            data.name = "Lucas Alfredo";
+
+            var vm  = new Vue({
+                el: "#app-2",
+                data: data
+            });
+        </script>
+        <p id="app-3">{{staff.salary}}</p>
+        <script>
+            /*
+            * Vue have the caractere '$' ti diferentiate the vue methods to my own methods.
+            * See the example below:
+            */
+            var data = {
+                staff: {
+                    salary: 20000
+                }
+            }
+
+            var vm = new Vue({
+                el: "#app-3",
+                data: data
+            });
+
+            alert(data == vm.$data);
+            alert(vm.$el == document.getElementById("app-3"));
+           data.staff.salary = 10000;
+            vm.$watch('data', function(newValue, oldValue){
+                alert(newValue + " " + oldValue);
+            })
+            
+        </script>
+
+
+
+
+		
+	</body>
+</html>

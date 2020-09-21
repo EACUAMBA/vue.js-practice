@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-pt">
+	<head>
+		<title>
+			3 - instance-lifecycle-hooks
+		</title>
+		<style>
+			
+		</style>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+        
+        <script>
+            /*
+            * If you want execute you each code in determinate stage of Vue building, you can use lifecycle hooks. See below how to use it:
+            */
+
+            var vm = new Vue({
+                data:{
+                    a: 2020
+                },
+                created:// Note that are more three times, update, mounted and destroyed. 
+                function(){
+                    //this code will be executed on creation time
+                    console.log("a is: " + this.a);
+                }
+            });
+
+            
+        </script>
+		
+	</body>
+</html>
